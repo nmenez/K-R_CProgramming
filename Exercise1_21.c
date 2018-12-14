@@ -5,7 +5,7 @@ to reach a tab stop, which should be given preference?  */
 
 #include <stdio.h>
 #define MAXLINE 1000
-#define NTAB  3
+#define NTAB  4
 #define BLANK ' '
 #define TAB '\t'
 
@@ -36,7 +36,7 @@ void copy(char to[], char from[]){
 void entab(char s[]){
     int i = 0;
     int j = 0;
-    char tmp[MAXLINE];
+    char tmp[MAXLINE] = {'\0'};
     int spaces = 0;
     while (s[i] != '\0')
     {
@@ -71,10 +71,13 @@ void entab(char s[]){
 
 
 int main(){
-    printf("t123t123t123t123t123t123t123t123\n");
-    char line[] = "hellobbbbbbworld\n";
-    printf("%s", line);
-    entab(line);
-    printf("%s", line); 
+    int len;
+    char line[MAXLINE] = {'\0'};;
+    
+    while ((len=getlinex(line, MAXLINE)) > 0)
+    {   //printf("old:  %s", line);
+        entab(line);
+        printf("%s", line);
+    }
     return 0;
 }

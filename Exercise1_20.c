@@ -14,7 +14,8 @@ thello world
 
 #include <stdio.h>
 #define MAXLINE 1000
-#define NTAB  5
+#define NTAB  4
+#define SPACE ' '
 
 int getlinex(char s[], int lim)
 {
@@ -39,20 +40,20 @@ void copy(char to[], char from[]){
         ++i;
 }
 
-void entab(char s[])
+void detab(char s[])
 { 
-    char tmp[MAXLINE];
+    char tmp[MAXLINE] ={'\0'};
     int i, j;
     i = j = 0;
 
     while (s[i] != '\0')
     {   
         if (s[i] == '\t')
-        {   tmp[j] = '#';
+        {   tmp[j] = SPACE;
             j++;
             while ((j%NTAB) != 0)
             {   
-                tmp[j] = '#';
+                tmp[j] = SPACE;
                 j++;
             }
         }
@@ -68,16 +69,15 @@ void entab(char s[])
     copy(s, tmp);
 }
 
-char line[MAXLINE];
+char line[MAXLINE] = {'\0'};
 int len;
 int main()
 {    
-    printf("t1234t1234t1234t1234t1234t1234t1234t1234\n");
     while ((len=getlinex(line, MAXLINE)) > 0)
     {   
-        
-        entab(line);
-        printf("%s", line);
+        printf("old: %s", line);
+        detab(line);
+        printf("new: %s", line);
     }
     
 }
