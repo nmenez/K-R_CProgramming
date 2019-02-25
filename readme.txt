@@ -1,1 +1,1 @@
-Going through exercises of the famouse K&R C programming language book.
+Going through exercises of the famous K&R C programming language book.
