@@ -5,7 +5,7 @@ after the last non-blank character that occurs before the n-th column of input.
 
 
 #include <stdio.h>
-#define MAXLINE 30
+#define MAXLINE 40
 
 int add_word_to_line(char line[], int line_counter, char word[], int word_counter)
 {   
@@ -33,17 +33,19 @@ void fold(){
     line[line_counter] = '\0';
     word[word_counter] = '\0';
 
-   while ((c=getchar())!= EOF){
+   while ((c=getchar())!= EOF)
+    {
         if ((c != ' ') & (c!= '\n') & (word_counter<MAXLINE)) /* accumulate chars into word buffer */
         {
             word[word_counter] = c;
             word_counter++;
         }
+
         else // space encountered, end of previous word.
         {   
             if (word_counter + line_counter + 1 >= MAXLINE) //if adding word to line is greater than MAXLINE, print line,  and then reset
             {  
-                printf("%s: %i\n", line, line_counter);
+                printf("%s\n", line);
                 line[0] = '\0';
                 line_counter = 0;
             }
@@ -53,7 +55,7 @@ void fold(){
                 line_counter = add_word_to_line(line, line_counter, word, word_counter);
             }
             word[word_counter] = '\0';          
-            word_counter=0;    
+            word_counter = 0;    
         }
     }
 }
