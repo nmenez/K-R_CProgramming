@@ -104,7 +104,7 @@ int check_syntax()
                 syntax_stack_position++;
                 syntax_stack[syntax_stack_position] = c;
                 status = INQUOTE;
-                printf("INQUOTE");
+               // printf("INQUOTE");
             }
 
             else if (c == '\"')
@@ -112,7 +112,7 @@ int check_syntax()
                 syntax_stack_position++;
                 syntax_stack[syntax_stack_position] = c;
                 status = INDOUBLEQUOTE;
-                printf("INDOUBLEQUOTE");
+                //printf("INDOUBLEQUOTE");
             }
 
         }
@@ -120,7 +120,7 @@ int check_syntax()
         else if (status == INQUOTE)
         {
             if (c == '\'')
-            {   printf("OUTQUOTE");
+            {   //printf("OUTQUOTE");
                 syntax_stack[syntax_stack_position] = '\0';
                 syntax_stack_position--;
                 status = OUTQUOTE;
@@ -130,7 +130,7 @@ int check_syntax()
                 syntax_stack_position++;
                 syntax_stack[syntax_stack_position] = c;
                 status = ESCAPE;
-                printf("ESCAPE");
+                //printf("ESCAPE");
             }
 
         }
@@ -139,7 +139,7 @@ int check_syntax()
         {
             if (c=='\"')
             {
-                printf("OUTQUOTE");
+                //printf("OUTQUOTE");
                 syntax_stack[syntax_stack_position] = '\0';
                 syntax_stack_position--;
                 status = OUTQUOTE;                
@@ -151,7 +151,7 @@ int check_syntax()
         {
             if ((c=='a') | (c=='b') | (c=='e') | (c=='f') | (c=='n') | (c=='r') | (c=='t') | (c=='v') | (c=='\\') | (c=='\'') | (c=='\"') | (c=='0'))
             {
-                printf("INQUOTE");
+                //printf("INQUOTE");
                 syntax_stack[syntax_stack_position] = '\0';
                 syntax_stack_position--;
                 status = INQUOTE;
@@ -181,14 +181,6 @@ int check_syntax()
                 status = OUTQUOTE;
             }
         }
-
-
-        if (c=='\n')
-        {
-            printf("\n");
-        }
-
-        printf("%i", syntax_stack_position);
     }
     
     if (syntax_stack_position == -1)

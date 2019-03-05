@@ -62,5 +62,3 @@ int main()
     remove_comments();
     return 0;
 }
-
-// blort /* */
