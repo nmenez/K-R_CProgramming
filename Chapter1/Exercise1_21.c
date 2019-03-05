@@ -44,7 +44,7 @@ void entab(char s[]){
         {    
             spaces++;
         }
-        else
+        else    
         {   
             int ntabs = spaces / NTAB;
             int remspaces = spaces % NTAB;
@@ -73,7 +73,7 @@ void entab(char s[]){
 int main(){
     int len;
     char line[MAXLINE] = {'\0'};;
-    
+    printf("hello");
     while ((len=getlinex(line, MAXLINE)) > 0)
     {   //printf("old:  %s", line);
         entab(line);
