@@ -17,9 +17,24 @@ void remove_comments(){
         buffer[1] = c; // add current */ character  to buffer
 
         // block comment
-        if ((status == OUTCOMMENT) & (buffer[0] == '/') & (buffer[1] == '*'))
-        {
-            status = INBLOCKCOMMENT;
+        if (status == OUTCOMMENT)  
+        {   if ((buffer[0] == '/') & (buffer[1] == '*'))
+            {
+                status = INBLOCKCOMMENT;
+            }
+            else if ((buffer[0] == '/') & (buffer[1] == '/'))
+            {
+                status = INLINECOMMENT;
+            }
+
+            /*print the previously read character to avoid printing the '/' character 
+             when exiting a line or block comment. when a comment is being exited
+             the buffer is flushed (i.e set to {'\0', '\0'})
+            */ 
+            else if ((buffer[1] != '\0') & (buffer[0] != '\0'))
+            {
+                printf("%c", buffer[0]);
+            }
         }
 
         if ((status == INBLOCKCOMMENT) & (buffer[0] == '*') & (buffer[1] == '/'))
@@ -29,24 +44,12 @@ void remove_comments(){
             buffer[1] = '\0';
         }
 
-        //in line comment
-        if ((status == OUTCOMMENT) & (buffer[0] == '/') & (buffer[1] == '/'))
-        {
-            status = INLINECOMMENT;
-        }
-
         if ((status == INLINECOMMENT) & (c == '\n'))
         {
             status = OUTCOMMENT;
             printf("\n");
             buffer[0] = '\0';
             buffer[1] = '\0';
-        }
-
-
-        if ((status == OUTCOMMENT) & (buffer[1] != '\0') & (buffer[0] != '\0'))
-        {
-           printf("%c", buffer[0]);
         }
 
     }
