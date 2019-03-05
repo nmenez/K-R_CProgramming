@@ -1,23 +1,24 @@
-/* Exercise 1-23. Write a program to remove all comments from a C program.  
-Don't forget to handle // quoted strings and character constants properly. C comments do not nest.  */
+
 
 #include <stdio.h> 
 #define INBLOCKCOMMENT 0
 #define OUTCOMMENT 1
 #define INLINECOMMENT 2
+/* indicates where the syntax_stack is initialize to 0 because when the first element is placed on a stack 
+       the syntax_stack position should point at the first element (i.e. position 0)
+*/
 
 void remove_comments(){
-
+   {
     int buffer[2] = {'\0', '\0'}; 
     int c;
     int status = OUTCOMMENT;
     while ((c = getchar()) != EOF)
     {
-        buffer[0] = buffer[1]; //move character in buffer pos 1 to pos 0
-        buffer[1] = c; // add current */ character  to buffer
-
-        // block comment
-        if ((status == OUTCOMMENT) & (buffer[0] == '/') & (buffer[1] == '*'))
+        buffer[0] = buffer[1]; 
+        buffer[1] = c; 
+        
+        if ((status== OUTCOMMENT) & (buffer[0] == '/') & (buffer[1] == '*'))
         {
             status = INBLOCKCOMMENT;
         }
@@ -29,7 +30,7 @@ void remove_comments(){
             buffer[1] = '\0';
         }
 
-        //in line comment
+        
         if ((status == OUTCOMMENT) & (buffer[0] == '/') & (buffer[1] == '/'))
         {
             status = INLINECOMMENT;
@@ -50,17 +51,16 @@ void remove_comments(){
         }
 
     }
-    if ((status == OUTCOMMENT) & (buffer[1] != '\0'))  // print last character if OUTCOMMENt
+    if ((status == OUTCOMMENT) & (buffer[1] != '\0'))  
     {
         printf("%c", buffer[1]);
     }
 }
-
+}
 
 int main()
 {
     remove_comments();
-    return 0;
-}
+    int c = '\a'; 
 
-// blort /* */
+}
