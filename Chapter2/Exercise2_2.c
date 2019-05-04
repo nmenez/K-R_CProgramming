@@ -25,7 +25,7 @@ int getline_(char s[], int lim)
 }
 
 
-int getline2_(char s[], int lim)
+int getline_no_ands_ors(char s[], int lim)
 {
     int c;
     int  i=0;
@@ -62,7 +62,7 @@ int getline2_(char s[], int lim)
 
 int main()
 {   char s[10000];
-    int len = getline2_(s, 10000);
+    int len = getline_no_ands_ors(s, 10000);
     printf("%s\n", s);
     printf("%d\n", len);
 }

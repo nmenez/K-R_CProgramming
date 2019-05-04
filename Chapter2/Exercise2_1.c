@@ -67,13 +67,13 @@ int main()
     printf("\n");
     printf("calc LONG INT MAX %ld\n", pow_(2, 63)-1);
     printf("calc LONG INT MIN %ld\n", -1*pow_(2,63));
-
+    
 
     printf("-------------------\n");
     printf("calc UCHAR MAX %lu\n", pow_(2, 8)-1);
 
     printf("\n");
-    printf("calc USHORT MAX %lu\n", pow_(2, 16)-1);
+    printf("calc USHORT MAX %lu\n", pow_(2, 16)-1);         
 
     printf("\n");
     printf("calc UINT MAX %lu\n", pow_(2, 32)-1);
@@ -84,6 +84,6 @@ int main()
 
 
     printf("\n");
-    printf("%f", pow_(2,64)-1);
+    printf("%f\n", pow_(2,64)-1);
 
 }
